@@ -13,11 +13,11 @@ CREATE TABLE #Answer (
 WITH SuitableBills AS (
   SELECT b.bID bID,
          ROW_NUMBER() OVER w N
-    FROM Bills b WITH(NOLOCK)
-    JOIN BillContent bc WITH(NOLOCK)
+    FROM Bills b
+    JOIN BillContent bc
       ON b.bID = bc.bID
      AND bc.Product = N'Контур-Экстерн'
-    LEFT JOIN RetailPacks rp WITH(NOLOCK)
+    LEFT JOIN RetailPacks rp
       ON bc.bcID = rp.bcID
      AND UpTo >= '2021-01-01'
    WHERE UpTo IS NOT NULL
