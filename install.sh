@@ -22,7 +22,7 @@ do
 done
 echo "The server is ready."
 
-docker exec $CONTAINER_NAME $SQLCMD_PATH -S localhost -C -U sa -P $SA_PASSWORD -e < $SETUP_SCRIPT
+docker exec -i $CONTAINER_NAME $SQLCMD_PATH -S localhost -C -U sa -P $SA_PASSWORD -e < $SETUP_SCRIPT > /dev/null
 if [ $? -eq 0 ]; then
     echo 'Successful setup!'
 else
